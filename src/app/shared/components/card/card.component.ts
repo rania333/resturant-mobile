@@ -2,7 +2,7 @@ import { Component, Input, OnChanges } from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatChipsModule} from '@angular/material/chips';
 import { cardType } from '../models/card.model';
-import { IResturant } from '../../../restaurant/models/Restaurant.model';
+import { IMenu, IResturant } from '../../../restaurant/models/Restaurant.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CardComponent implements OnChanges {
   
-  @Input() cardData : IResturant = {} as IResturant 
+  @Input() cardData : IResturant| IMenu = {} as IResturant | IMenu
   @Input() cardType: cardType = cardType.restaurant
   protected imgUrl: string = ''
   protected types = cardType;

@@ -1,5 +1,5 @@
 <mat-card appearance="outlined" class="card" 
-     [ngStyle]="{ 'background-image': imgUrl}">
+     [ngStyle]="{ 'background-image': imgUrl, 'opacity': cardType == types.restaurant? '80%': '50%'}">
      <!-- Resturant card -->
      @if (cardType == types.restaurant) {
         <mat-card-footer>
@@ -11,4 +11,9 @@
             </mat-chip-set>
         </mat-card-footer>
      }
+
+    <!-- Menu card -->
+    @if (cardType == types.menu) {
+        <mat-card-content>{{cardData.name}}</mat-card-content>
+    }
 </mat-card>

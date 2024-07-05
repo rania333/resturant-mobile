@@ -2,7 +2,6 @@
     width: 40.5vw;
     height: 32.5vh;
     background-size: cover;
-    opacity: 80%;
     margin-bottom: 2vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: relative;
@@ -21,5 +20,11 @@
             background-color: #fff;
             span { font-family: 'inter' }
         }
+    }
+    mat-card-content{
+        font-family: 'inter';
+        margin: auto;
+        font-weight: 500;
+        color: #fff;
     }
 }
