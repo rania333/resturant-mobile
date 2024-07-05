@@ -1,1 +1,14 @@
-<p>card works!</p>
+<mat-card appearance="outlined" class="card" 
+     [ngStyle]="{ 'background-image': imgUrl}">
+     <!-- Resturant card -->
+     @if (cardType == types.restaurant) {
+        <mat-card-footer>
+            <h5>{{cardData.name}}</h5>
+            <mat-chip-set>
+                @for (tag of cardData.tags ; track $index) {
+                    <mat-chip>{{tag}}</mat-chip>
+                }
+            </mat-chip-set>
+        </mat-card-footer>
+     }
+</mat-card>

@@ -7,7 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 
 
 const restaurantRoutes: Routes = [
-  { path: '', component: HomeComponent }
+  { path: '', component: HomeComponent },
 ]
 
 @NgModule({

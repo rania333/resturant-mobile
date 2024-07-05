@@ -1,5 +1,12 @@
-<div class="container">
-    <div class="row">
+<div class="w-100 d-flex flex-column">
+    <div class="d-flex flex-row justify-content-between">
         <app-title [title]="'Resturants'"></app-title>
+        <img class="img" src="assets/photos/toggle.png"/>
+    </div>
+    <div class="d-flex flex-row flex-wrap justify-content-between pt-5">
+        @for (resturant of resturants; track resturant.id) {
+            <app-card [cardType]="cardType.restaurant" [cardData]="resturant"
+            (click)="navigateToRestaurantMenu(resturant)" routerLinkActive="active" ></app-card>
+        }
     </div>
 </div>

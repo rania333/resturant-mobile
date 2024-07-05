@@ -2,6 +2,7 @@ export interface IResturant {
     id: number,
     name: string,
     restaurantBackground: string,
+    background?: string,
     tags: string[],
     menus: IMenu[]
 }
