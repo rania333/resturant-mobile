@@ -25,8 +25,8 @@ export class RestaurantDetailsComponent implements OnInit {
     history.back()
   }
 
-  navigateToMenu(id: number) {
-    this._router.navigate(['menu', id])
+  navigateToMenu(id: number, name: string) {
+    this._router.navigate(['menu', id], {state: {name}})
 
   }
 

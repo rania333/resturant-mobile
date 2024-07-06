@@ -1,0 +1,39 @@
+.meals {
+    mat-card {
+        // position: relative;
+        
+        background-color: #333;
+        color: white;
+        img {
+            width: 30vw;
+            height: 15vh;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        mat-card-content{
+            font-family: 'inter';
+            font-weight: 400;
+            h5 { font-size: 4vw }
+            p { font-size: 3vw }
+            .addBtn {
+                background-color: #fff;
+                border: none;
+                border-radius: 2vw;
+            }
+            .unavailable-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: red;
+                font-weight: bold;
+              }
+        }
+        
+    }
+}

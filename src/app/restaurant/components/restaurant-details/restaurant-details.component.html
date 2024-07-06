@@ -6,7 +6,7 @@
     <div class="d-flex flex-row flex-wrap justify-content-between pt-5">
         @for (menu of menus; track menu.id) {
             <app-card [cardType]="cardTypes.menu" [cardData]="menu"
-            (click)="navigateToMenu(menu.id)" routerLinkActive="active" ></app-card>
+            (click)="navigateToMenu(menu.id, menu.name)" routerLinkActive="active" ></app-card>
         }
     </div>
 </div>
