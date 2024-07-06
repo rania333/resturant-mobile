@@ -1,6 +1,5 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import {MatListModule} from '@angular/material/list';
+import { ActivatedRoute, Router } from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
 import {MatIcon} from '@angular/material/icon';
 
@@ -8,11 +7,13 @@ import { MenusService } from '../../services/menus.service';
 import { Subject, takeUntil } from 'rxjs';
 import { SharedModule } from '../../../shared/shared.module';
 import { IMenu } from '../../models/menu.model';
+import { CartService } from '../../../cart/services/cart.service';
+import { ICart } from '../../../cart/models/cart.model';
 
 @Component({
   selector: 'app-meals',
   standalone: true,
-  imports: [SharedModule, MatListModule, MatCardModule, MatIcon],
+  imports: [SharedModule, MatCardModule, MatIcon],
   templateUrl: './meals.component.html',  
   styleUrl: './meals.component.scss'
 })
@@ -22,10 +23,11 @@ export class MealsComponent implements OnInit, OnDestroy {
   protected meals: IMenu[] = []
 
   private _activatedRoute = inject(ActivatedRoute)
-  protected menusService = inject(MenusService)
+  private _router = inject(Router)
+  private menusService = inject(MenusService)
+  protected cartService = inject(CartService)
   ngOnInit(): void {
     this.title = history.state.name;
-    console.log('count', this.menusService.cartCount.getValue());
     // get meals
     this._activatedRoute.paramMap.pipe(takeUntil(this.destroy$)).subscribe(res => {      
       this.getMeals(res.get('id') as unknown as number)
@@ -36,16 +38,18 @@ export class MealsComponent implements OnInit, OnDestroy {
     this.menusService.getAllMeals(id).pipe(takeUntil(this.destroy$))
     .subscribe(res => {
       this.meals = res
-      console.log('res api', res);
     })
   }
 
   myCart() {
-
+    this._router.navigate(['cart'])
   }
 
   addToCart(item: IMenu) {
-    this.menusService.addItemToCart(item)
+    // Mapping
+    const cartItem: ICart = {id: item.id, name: item.name, price: item.price, 
+      thumbnail: item.thumbnail, qnt: 1}
+    this.cartService.addItemToCart(cartItem)
   }
 
   back() {

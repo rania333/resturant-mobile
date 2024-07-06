@@ -1,0 +1,24 @@
+.cart {
+    mat-card {    
+        box-shadow: 0px 4px 4px 0px #00000040;    
+        background-color: #333;
+        color: white;
+        img {
+            width: 30vw;
+            height: 15vh;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        mat-card-content{
+            font-family: 'inter';
+            font-weight: 400;
+            h5 { font-size: 4vw }
+            p { font-size: 3vw }
+            .btn {
+                background-color: #fff;
+                border: none;
+                border-radius: 2vw;
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+<div class="w-100 d-flex flex-column">
+    <div class="d-flex flex-row justify-content-between">
+        <div class="d-flex flex-row flex-grow-1">
+            <img class="me-3" src="assets/photos/arrow.png" (click)="back()"/>
+            <app-title [title]="'cart'"></app-title>
+        </div>
+    </div>
+    <div class="d-flex flex-row flex-wrap justify-content-between pt-5 cart">
+        @for (cart of myCart; track cart.id) {
+            <mat-card class="d-flex flex-row align-items-center w-100 my-1 p-3" appearance="outlined">
+                <img mat-card-image [src]="cart.thumbnail"/>
+                <mat-card-content class="pb-0 w-100 d-flex justify-content-between">
+                    <div class="d-flex flex-column justify-content-between ">
+                        <h5>{{cart.name}}</h5>
+                        <span>{{cart.price | currency: 'EGP':'symbol-narrow'}}</span>
+                    </div>
+                    <div class="controls">
+                        <div class="d-flex flex-column justify-content-between">
+                            <button mat-icon-button class="btn d-flex p-1" (click)="addToCart(cart)">
+                               <mat-icon>add</mat-icon>
+                           </button>
+                       </div>
+                       <div class="d-flex justify-content-center p-1">{{cart.qnt}}</div>
+                       <div class="d-flex justify-content-between">
+                            <button mat-icon-button class="btn d-flex p-1" 
+                                (click)="removeFromCart(cart)" *ngIf="cart.qnt">
+                            <mat-icon>remove</mat-icon>
+                        </button>
+                   </div>
+                    </div>    
+                </mat-card-content>
+            </mat-card>
+        }
+    </div>
+    
+</div>
