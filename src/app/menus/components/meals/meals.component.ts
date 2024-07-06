@@ -21,17 +21,19 @@ export class MealsComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   protected title: string = ''
   protected meals: IMenu[] = []
-
   private _activatedRoute = inject(ActivatedRoute)
   private _router = inject(Router)
   private menusService = inject(MenusService)
-  protected cartService = inject(CartService)
+  private cartService = inject(CartService)
+  protected countObs$ = this.cartService.cartCount
+
   ngOnInit(): void {
     this.title = history.state.name;
     // get meals
     this._activatedRoute.paramMap.pipe(takeUntil(this.destroy$)).subscribe(res => {      
       this.getMeals(res.get('id') as unknown as number)
     })
+    this.countObs$ = this.cartService.cartCount;
   }
 
   getMeals(id: number) {
@@ -57,6 +59,7 @@ export class MealsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    window.location.reload()
     this.destroy$.next();
     this.destroy$.complete();
   }

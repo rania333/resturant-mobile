@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MealsComponent } from './components/meals/meals.component';
 import { MenusService } from './services/menus.service';
 import { SharedModule } from '../shared/shared.module';
+import { CartService } from '../cart/services/cart.service';
 
 
 const mealsRoutes: Routes = [
@@ -15,6 +16,6 @@ const mealsRoutes: Routes = [
     SharedModule,
     RouterModule.forChild(mealsRoutes)
   ],
-  providers: [MenusService]
+  providers: [MenusService, CartService]
 })
 export class MenusModule { }

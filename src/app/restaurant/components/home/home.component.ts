@@ -31,7 +31,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.resturants = res
     })
   }
-  navigateToRestaurantMenu(restaurant: IResturant) {    
+  navigateToRestaurantMenu(restaurant: IResturant) {  
+    localStorage.setItem('restId', String(restaurant.id))  
     this._router.navigate(['restaurant', restaurant.id], {state: { menus: restaurant.menus, name: restaurant.name}})
   }
 

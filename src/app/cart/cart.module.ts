@@ -5,7 +5,6 @@ import { CartService } from './services/cart.service';
 import { SharedModule } from '../shared/shared.module';
 
 
-
 const cartRoutes: Routes = [
   { path: '', component: MyCartComponent },
 ]

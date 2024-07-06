@@ -5,3 +5,8 @@ export interface ICart {
     price: number
     qnt: number
 }
+
+export interface IOrder {
+    itemId: number
+    quantity: number
+}

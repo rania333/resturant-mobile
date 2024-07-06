@@ -22,3 +22,22 @@
         }
     }
 }
+
+.order {
+    box-shadow: 0px 4px 4px 0px #00000040;
+    background: #4A4A4A;
+    position: absolute;
+    bottom: 5vh;
+    padding: 2vh 3vw;
+    display: flex;
+    justify-content: space-between;
+    width: 92vw;
+    border-radius: 2vw;
+    cursor: pointer;
+    span {
+        font-family: 'inter';
+        color: white;
+        font-weight: 500;
+        font-size: 4vw;
+    }
+}

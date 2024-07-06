@@ -6,7 +6,7 @@
         </div>
         <div class="position-relative">
             <img src="assets/photos/cart.png" (click)="myCart()"/>
-            <span class="badge" *ngIf="(cartService.cartCount.getValue())>= 1">{{cartService.cartCount.getValue()}}</span>
+            <span class="badge" *ngIf="(countObs$).value >= 1">{{countObs$ | async}}</span>
         </div>
     </div>
     <div class="d-flex flex-row flex-wrap justify-content-between pt-5 meals">

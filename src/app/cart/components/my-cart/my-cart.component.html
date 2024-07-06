@@ -33,4 +33,9 @@
         }
     </div>
     
+
+    <div class="order" (click)="orderNow()">
+        <span>Order</span>
+        <span>{{cartService.getTotalPrice() | currency: 'EGP':'symbol-narrow' }}</span>
+    </div>
 </div>
