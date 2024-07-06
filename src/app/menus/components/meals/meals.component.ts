@@ -22,9 +22,10 @@ export class MealsComponent implements OnInit, OnDestroy {
   protected meals: IMenu[] = []
 
   private _activatedRoute = inject(ActivatedRoute)
-  private menusService = inject(MenusService)
+  protected menusService = inject(MenusService)
   ngOnInit(): void {
-    this.title = history.state.name    
+    this.title = history.state.name;
+    console.log('count', this.menusService.cartCount.getValue());
     // get meals
     this._activatedRoute.paramMap.pipe(takeUntil(this.destroy$)).subscribe(res => {      
       this.getMeals(res.get('id') as unknown as number)

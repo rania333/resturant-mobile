@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { IMenu } from '../models/menu.model';
 
 @Injectable({
@@ -8,6 +8,7 @@ import { IMenu } from '../models/menu.model';
 })
 export class MenusService {
   private cartItems: IMenu[] = [];
+  public cartCount: BehaviorSubject<number> = new BehaviorSubject<number>(JSON.parse(localStorage.getItem('cart') as string)?.length ?? 0)
 
   private _httpClient = inject(HttpClient);
 
@@ -21,6 +22,7 @@ export class MenusService {
       existingItem.qnt += 1;
     } else {
       this.cartItems.push({ ...itemData, qnt: 1 });
+      this.cartCount.next(this.cartCount.getValue() + 1)
     }
     localStorage.setItem('cart', JSON.stringify(this.cartItems));
   }
