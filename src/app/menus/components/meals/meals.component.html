@@ -4,14 +4,15 @@
             <img class="me-3" src="assets/photos/arrow.png" (click)="back()"/>
             <app-title [title]="title"></app-title>
         </div>
-        <div>
-            <img class="" src="assets/photos/cart.png" (click)="back()"/>
+        <div class="position-relative">
+            <img src="assets/photos/cart.png" (click)="myCart()"/>
+            <span class="badge">3</span>
         </div>
     </div>
     <div class="d-flex flex-row flex-wrap justify-content-between pt-5 meals">
         @for (meal of meals; track meal.id) {
-            <mat-card class="d-flex flex-row align-items-center p-3 my-3" appearance="outlined"
-                [ngClass]="{'unavailable':  !meal.availability}">
+            <mat-card class="d-flex flex-row align-items-center my-1 p-3" appearance="outlined"
+                [ngClass]="{'unavailable': !meal.availability}">
                 <img mat-card-image [src]="meal.thumbnail"/>
                 <span class="unavSpan" *ngIf="!meal.availability">Unavailable</span>
                 <mat-card-content class="pb-0">
@@ -19,7 +20,7 @@
                     <p>{{meal.description}}</p>
                     <div class="d-flex justify-content-between">
                         <span class="align-self-center">{{meal.price | currency: 'EGP':'symbol-narrow'}}</span>
-                         <button mat-icon-button class="addBtn d-flex p-1">
+                         <button mat-icon-button class="addBtn d-flex p-1" [disabled]="!meal.availability" (click)="addToCart(meal)">
                             <mat-icon>add</mat-icon>
                         </button>
                     </div>

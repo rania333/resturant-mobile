@@ -1,5 +1,18 @@
+.badge {
+    position: absolute;
+    background-color: red;
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    bottom: 15px;
+    left: 15px; 
+    font-size: 3vw; 
+  }
 .meals {
-    mat-card {        
+    mat-card {    
+        box-shadow: 0px 4px 4px 0px #00000040;    
         background-color: #333;
         color: white;
         img {
@@ -26,7 +39,6 @@
             }
         }
         &.unavailable {
-            box-shadow: 0px 4px 4px 0px #00000040;
             opacity: 84%;
             cursor: none;
         }

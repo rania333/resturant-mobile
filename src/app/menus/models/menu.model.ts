@@ -5,4 +5,5 @@ export interface IMenu {
     description: string
     price: number
     availability: boolean
+    qnt: number
 }

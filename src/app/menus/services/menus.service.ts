@@ -7,9 +7,21 @@ import { IMenu } from '../models/menu.model';
   providedIn: 'root'
 })
 export class MenusService {
+  private cartItems: IMenu[] = [];
+
   private _httpClient = inject(HttpClient);
 
   getAllMeals(id: number): Observable<IMenu[]> {
     return this._httpClient.get<IMenu[]>(`https://api.mocki.io/v2/aqprm7yv/menus/${id}`)
+  }
+
+  addItemToCart(itemData: IMenu) {
+    const existingItem = this.cartItems.find(item => item.id == itemData.id);
+    if (existingItem) {
+      existingItem.qnt += 1;
+    } else {
+      this.cartItems.push({ ...itemData, qnt: 1 });
+    }
+    localStorage.setItem('cart', JSON.stringify(this.cartItems));
   }
 }

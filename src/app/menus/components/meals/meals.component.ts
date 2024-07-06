@@ -39,6 +39,14 @@ export class MealsComponent implements OnInit, OnDestroy {
     })
   }
 
+  myCart() {
+
+  }
+
+  addToCart(item: IMenu) {
+    this.menusService.addItemToCart(item)
+  }
+
   back() {
     history.back()
   }
